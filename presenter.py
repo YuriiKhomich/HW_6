@@ -2,9 +2,8 @@ from file_models import FILENAME
 import pickle
 
 
-def add_entry(entry):
+def add_entry(entry, entries):
     """Add an entry to the list"""
-    entries = read_entries()
     entries.append(entry)
     save_entries(entries)
     print("Запис доданий успішно!")
@@ -35,9 +34,8 @@ def save_entries(entries):
         pickle.dump(entries, file)
 
 
-def read_all_entries():
+def read_all_entries(entries):
     """Display all entries"""
-    entries = read_entries()
     if entries:
         for index, entry in enumerate(entries, 1):
             print(f"Запись #{index}")
@@ -47,8 +45,9 @@ def read_all_entries():
     else:
         print("Записів не знайдено.")
 
-def clear_entries():
+
+def clear_entries(entries):
     """Clear the list of entries"""
-    entries = []
+    entries.clear()
     save_entries(entries)
     print("Список записів очищено.")

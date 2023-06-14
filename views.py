@@ -1,8 +1,10 @@
 from presenter import (add_entry, create_entry,
-                       read_all_entries, clear_entries)
+                       read_all_entries, clear_entries,
+                       read_entries)
 
 
 def main():
+    entries = read_entries()
     """Головне меню програми"""
     while True:
         print("Меню:")
@@ -12,11 +14,11 @@ def main():
         print("4. Вийти")
         choice = input("Оберіть опцію: ")
         if choice == "1":
-            add_entry(create_entry())
+            add_entry(create_entry(), entries)
         elif choice == "2":
-            read_all_entries()
+            read_all_entries(entries)
         elif choice == "3":
-            clear_entries()
+            clear_entries(entries)
         elif choice == "4":
             break
         else:
